@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f6f7fb" />
+  <title>Artem Lavrentyev — Data Science & AI</title>
+  <meta name="description" content="High school student from Almaty building ML systems for health, privacy, and historical data." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Artem Lavrentyev — Data Science & AI" />
+  <meta property="og:description" content="Projects: MpoxDetection.ai, EmojiPrompt decoding, Volga German deportation records digitization." />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root{
+      --bg:#f6f7fb; --card:#ffffff; --card2:#ffffff;
+      --text:#0d1530; --muted:#394267; --muted2:#5a648f;
+      --line:rgba(0,0,0,.08);
+      --accent:#7c5cff; --accent2:#2ee9a6;
+      --shadow: 0 18px 60px rgba(7,11,20,.12);
+      --radius:18px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    [data-theme="dark"]{
+      --bg:#070b14; --card:#0b1220; --card2:#0e1730;
+      --text:#e7ecff; --muted:#a9b4da; --muted2:#7f8ab5;
+      --line:rgba(255,255,255,.08);
+      --shadow: 0 18px 60px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; font-family:var(--sans); color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 20% -10%, rgba(124,92,255,.25), transparent 60%),
+        radial-gradient(900px 500px at 95% 0%, rgba(46,233,166,.18), transparent 60%),
+        var(--bg);
+      line-height:1.55;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:1100px; margin:0 auto; padding:22px 18px 60px}
+    .nav{
+      position:sticky; top:12px; z-index:50;
+      display:flex; justify-content:space-between; align-items:center;
+      padding:12px 14px; border:1px solid var(--line); border-radius:999px;
+      background:rgba(255,255,255,.75); backdrop-filter: blur(14px);
+      box-shadow: 0 10px 30px rgba(0,0,0,.22);
+    }
+    [data-theme="dark"] .nav{background:rgba(10,14,26,.55)}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px}
+    .dot{width:10px; height:10px; border-radius:50%;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      box-shadow:0 0 0 4px rgba(124,92,255,.15);
+    }
+    .navlinks{display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-end; align-items:center}
+    .navlinks a{
+      font-size:14px; color:var(--muted); padding:8px 10px; border-radius:999px;
+      border:1px solid transparent;
+    }
+    .navlinks a:hover{color:var(--text); border-color:var(--line); background:rgba(255,255,255,.03)}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:10px 14px; border-radius:12px; border:1px solid var(--line);
+      background:linear-gradient(135deg, rgba(124,92,255,.18), rgba(46,233,166,.08));
+      box-shadow: none;
+      font-weight:600;
+    }
+    .btn:hover{transform: translateY(-1px); transition: transform .15s ease}
+    .ghost{ background:transparent; }
+    .grid{ display:grid; gap:16px; }
+    .hero{
+      margin-top:18px;
+      padding:26px; border-radius:var(--radius); border:1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.04), transparent 60%),
+        radial-gradient(800px 400px at 15% 0%, rgba(124,92,255,.16), transparent 55%),
+        radial-gradient(700px 380px at 85% 30%, rgba(46,233,166,.12), transparent 55%),
+        var(--card);
+      box-shadow: var(--shadow);
+    }
+    h1{margin:0 0 10px; font-size:40px; line-height:1.15; letter-spacing:-.6px}
+    .subtitle{color:var(--muted); font-size:16px; max-width:75ch}
+    .pillrow{display:flex; gap:10px; flex-wrap:wrap; margin-top:16px}
+    .pill{
+      font-family:var(--mono);
+      font-size:12px; color:var(--muted);
+      padding:8px 10px; border-radius:999px;
+      border:1px solid var(--line); background:rgba(255,255,255,.02)
+    }
+    .cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:18px}
+    .section{
+      margin-top:18px;
+      padding:22px; border-radius:var(--radius);
+      border:1px solid var(--line);
+      background:var(--card);
+      box-shadow: var(--shadow);
+    }
+    .section h2{margin:0 0 10px; font-size:22px; letter-spacing:-.2px}
+    .muted{color:var(--muted)}
+    .twocol{ grid-template-columns: 1.3fr .9fr; }
+    @media (max-width: 920px){ .twocol{grid-template-columns:1fr} h1{font-size:34px} }
+    .card{
+      padding:16px; border-radius:16px; border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,.03), transparent 60%), var(--card2);
+    }
+    .card h3{margin:0 0 6px; font-size:16px}
+    .meta{display:flex; gap:10px; flex-wrap:wrap; margin-top:8px}
+    .tag{
+      font-size:12px; color:var(--muted); border:1px solid var(--line);
+      padding:6px 9px; border-radius:999px; background:rgba(255,255,255,.02)
+    }
+    .list{margin:10px 0 0; padding-left:18px; color:var(--muted)}
+    .list li{margin:6px 0}
+    .kpi{ display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; margin-top:12px }
+    @media (max-width: 720px){ .kpi{grid-template-columns:1fr} }
+    .kpi .box{
+      padding:14px; border-radius:16px; border:1px solid var(--line);
+      background:rgba(255,255,255,.02)
+    }
+    .kpi .num{font-size:18px; font-weight:800}
+    .kpi .lbl{font-size:12px; color:var(--muted)}
+    .footer{
+      margin-top:18px; padding:18px; color:var(--muted2);
+      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap
+    }
+    .small{font-size:13px}
+    .inline{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+    .sep{opacity:.35}
+    .toggle{
+      cursor:pointer; user-select:none;
+      border-radius:999px; padding:8px 10px;
+      border:1px solid var(--line); background:rgba(255,255,255,.02);
+      color:var(--muted); font-size:14px;
+    }
+
+    /* Optional: tiny toast */
+    .toast{
+      position:fixed; left:50%; bottom:22px; transform:translateX(-50%);
+      padding:10px 12px; border-radius:12px; border:1px solid var(--line);
+      background:rgba(255,255,255,.85); color:var(--text);
+      box-shadow: 0 10px 30px rgba(0,0,0,.18);
+      backdrop-filter: blur(10px);
+      display:none; z-index:999;
+      font-size:14px;
+    }
+    [data-theme="dark"] .toast{ background:rgba(10,14,26,.85); color:var(--text); }
+  </style>
+</head>
+
+<body>
+  <div class="wrap" id="top">
+    <div class="nav">
+      <div class="brand">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Artem Lavrentyev</span>
+      </div>
+
+      <div class="navlinks" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#honors">Honors</a>
+        <a href="#contact">Contact</a>
+        <button class="toggle" id="themeBtn" type="button" aria-label="Toggle theme">🌙</button>
+      </div>
+    </div>
+
+    <header class="hero">
+      <h1>Building data products that ship, and research that holds up.</h1>
+      <p class="subtitle">
+        I’m a high school student from Almaty interested in <b>Data Science</b>, <b>AI for health</b>, and <b>privacy</b>.
+      </p>
+
+      <div class="pillrow" aria-label="Highlights">
+        <span class="pill">MpoxDetection.ai • 5 clinic pilot • 1.6K monthly users</span>
+        <span class="pill">EmojiPrompt decoding • T5/BART fine-tuning</span>
+        <span class="pill">Volga German Institute • 17K+ records digitized</span>
+      </div>
+
+      <div class="cta">
+        <a class="btn" href="#projects">See projects</a>
+        <a class="btn ghost" href="#contact">Get in touch</a>
+        <a class="btn ghost" href="https://drive.google.com/file/d/1ErBQtHGY_110VMLZ19MDOvEoylRxUB5D/view?usp=sharing" id="resumeLink" title="Resume" target="_blank" rel="noopener noreferrer">Resume</a>
+        <a class="btn ghost" href="https://github.com/evilaechik" id="githubHeroLink" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/artem-lavrentyev-b93870282/" id="linkedinHeroLink" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+
+      <div class="kpi" role="list" aria-label="Quick stats">
+        <div class="box" role="listitem">
+          <div class="num">2/196</div>
+          <div class="lbl">Class rank</div>
+        </div>
+        <div class="box" role="listitem">
+          <div class="num">17,000+</div>
+          <div class="lbl">Historical records unified into a public dataset</div>
+        </div>
+        <div class="box" role="listitem">
+          <div class="num">Top 25</div>
+          <div class="lbl">Central Asian Startup Cup selection</div>
+        </div>
+      </div>
+    </header>
+
+    <section class="section grid twocol" id="about">
+      <div class="card">
+        <h2>About</h2>
+        <p class="muted">
+          I grew up in Almaty navigating identity across languages and histories. That question—who gets remembered, who gets access, who gets erased—pushed me into building things that make systems more fair and more usable.
+        </p>
+        <p class="muted">
+          It’s why I digitized deportation records with the Volga German Institute, and why I’m drawn to applied AI: if a model can change a decision in the real world, it should be accountable, testable, and built for the people who need it most.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Focus</h3>
+        <div class="meta">
+          <span class="tag">Data Science</span>
+          <span class="tag">Machine Learning</span>
+          <span class="tag">AI for Health</span>
+          <span class="tag">LLM Safety / Privacy</span>
+          <span class="tag">Applied Research</span>
+        </div>
+
+        <h3 style="margin-top:14px;">Currently</h3>
+        <ul class="list">
+          <li>Improving model robustness + evaluation (adversarial + real-world testing).</li>
+          <li>Deploying ML tools with clear user feedback loops.</li>
+          <li>Learning by shipping: pipelines, APIs, and data systems.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <h2>Projects</h2>
+      <p class="muted">A few things I’ve built / researched recently.</p>
+
+      <div class="grid" style="grid-template-columns: repeat(3, 1fr); gap:14px;">
+        <article class="card">
+          <h3>MpoxDetection.ai</h3>
+          <p class="muted small">
+            AI-powered diagnostic tool to detect skin diseases. Piloted in clinics; scaled to regular users; featured by major outlets.
+          </p>
+          <div class="meta">
+            <span class="tag">TensorFlow</span><span class="tag">CNN / VGG16</span><span class="tag">Deployment</span>
+          </div>
+          <ul class="list">
+            <li>Built + trained CNN models; curated a dermatology dataset.</li>
+            <li>Piloted in 5 clinics; ~1.6K monthly users.</li>
+            <li>Featured by Forbes Kazakhstan & National Geographic (add links).</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>EmojiPrompt Decoding</h3>
+          <p class="muted small">
+            Supervised LLM decoding pipeline to invert emoji-based privacy obfuscation (T5/BART).
+          </p>
+          <div class="meta">
+            <span class="tag">T5 / BART</span><span class="tag">SFT</span><span class="tag">Evaluation</span>
+          </div>
+          <ul class="list">
+            <li>Created large paired emoji↔text dataset.</li>
+            <li>Trained decoders; tested semantic failure points.</li>
+            <li>Ran adversarial evaluations across domains (medical/legal/etc.).</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Volga German Records Database</h3>
+          <p class="muted small">
+            Unified thousands of deportation records from archives into a searchable dataset for families and researchers.
+          </p>
+          <div class="meta">
+            <span class="tag">Data cleaning</span><span class="tag">Digitization</span><span class="tag">Public dataset</span>
+          </div>
+          <ul class="list">
+            <li>Combined censuses + deportation documents into one database.</li>
+            <li>Partnered with Wichita State University’s VGI supervision.</li>
+            <li>Released dataset for public access.</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="grid" style="grid-template-columns: repeat(2, 1fr); gap:14px; margin-top:14px;">
+        <article class="card">
+          <h3>Healthcare Deserts Map (Kazakhstan)</h3>
+          <p class="muted small">
+            ArcGIS-based mapping project combining population + facility density + travel-time analysis to propose mobile clinic loops for rural access.
+          </p>
+          <div class="meta">
+            <span class="tag">ArcGIS</span><span class="tag">Geo data</span><span class="tag">Policy</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Olympiad Mentoring & Events</h3>
+          <p class="muted small">
+            Mentored students across countries, coached competition winners, and organized large-scale math events with trained juries.
+          </p>
+          <div class="meta">
+            <span class="tag">Teaching</span><span class="tag">Leadership</span><span class="tag">Community</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <h2>Experience</h2>
+      <div class="grid" style="grid-template-columns: 1fr 1fr; gap:14px;">
+        <div class="card">
+          <h3>Software Engineering Intern</h3>
+          <p class="muted small">Amurex.ai (AI meeting notetaker) & accessibility tech work.</p>
+          <ul class="list">
+            <li>Backend + SQL-based pipelines; async Python; APIs.</li>
+            <li>Voice interface work for blind users; cross-platform logic.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>AI Policy Advisor</h3>
+          <p class="muted small">Respublica Party (Kazakhstan)</p>
+          <ul class="list">
+            <li>Strategy briefs on AI ethics, governance, and adoption.</li>
+            <li>Policy recommendations supporting ethical AI + startups.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Research Collaborations</h3>
+          <p class="muted small">Work spanning LLM privacy inversion and applied ML.</p>
+          <ul class="list">
+            <li>EmojiPrompt decoding: datasets, fine-tuning, evaluation.</li>
+            <li>Additional academic program research (add details/links).</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>MUN Leadership & Writing</h3>
+          <p class="muted small">Chair / Delegate; policy debate + geopolitics writing.</p>
+          <ul class="list">
+            <li>Led committees; best delegate awards (add specifics).</li>
+            <li>Edited youth-facing geopolitics explainers.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="honors">
+      <h2>Selected Honors</h2>
+      <div class="grid" style="grid-template-columns: repeat(2, 1fr); gap:14px;">
+        <div class="card">
+          <h3>AI / ML</h3>
+          <ul class="list">
+            <li>Northern Eurasian AI Olympiad — Gold Medal (finalist group).</li>
+            <li>Avito Machine Learning Cup — Top 25; Unique Solution Award.</li>
+            <li>Deep Learning Olympiad (MIPT) — Winner in applied AI tasks.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Research / Innovation</h3>
+          <ul class="list">
+            <li>“Great Challenges” — winner (CIS-wide selection), Mpox ML project.</li>
+            <li>Central Asian Startup Cup — selected in top cohort (add rank).</li>
+            <li>Other awards: math modeling + competitions (add specifics).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <h2>Contact</h2>
+      <p class="muted">
+        If you want to collaborate (research, product, or writing), email me or connect on socials.
+      </p>
+
+      <div class="grid" style="grid-template-columns: 1fr; gap:14px;">
+        <div class="card">
+          <h3>Message</h3>
+          <p class="muted small">
+            This is a static website, so email is the fastest way to reach me.
+          </p>
+          <p class="inline small">
+            <b>Email:</b> <a href="mailto:artem@stemolympiads.kz" id="emailLink">artem@stemolympiads.kz</a>
+            <span class="sep">•</span>
+            <a class="btn ghost" href="#" id="copyEmailBtn">Copy email</a>
+          </p>
+          <p class="inline small" style="margin-top:10px;">
+            <b>Links:</b>
+            <a class="btn ghost" href="https://github.com/evilaechik" id="githubLink" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a class="btn ghost" href="https://www.linkedin.com/in/artem-lavrentyev-b93870282/" id="linkedinLink" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a class="btn ghost" href="#" id="googleScholarLink" style="display:none">Google Scholar</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="small">© <span id="year"></span> Artem Lavrentyev. Built as a single-file site.</div>
+      <div class="small inline">
+        <a href="#top">Back to top</a>
+        <span class="sep">•</span>
+        <a href="#" id="printBtn">Print / Save PDF</a>
+      </div>
+    </footer>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    // Theme toggle (persists). Default: light.
+    const root = document.documentElement;
+    const btn = document.getElementById("themeBtn");
+
+    const saved = localStorage.getItem("theme"); // "light" | "dark" | null
+    const initial = (saved === "light" || saved === "dark") ? saved : "light";
+    root.setAttribute("data-theme", initial);
+    btn.textContent = (initial === "light") ? "☀️" : "🌙";
+
+    btn.addEventListener("click", () => {
+      const cur = root.getAttribute("data-theme") || "light";
+      const next = (cur === "light") ? "dark" : "light";
+      root.setAttribute("data-theme", next);
+      localStorage.setItem("theme", next);
+      btn.textContent = (next === "light") ? "☀️" : "🌙";
+    });
+
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Small toast helper
+    const toastEl = document.getElementById("toast");
+    let toastTimer = null;
+    function toast(msg){
+      if (!toastEl) return;
+      toastEl.textContent = msg;
+      toastEl.style.display = "block";
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => { toastEl.style.display = "none"; }, 1400);
+    }
+
+    /**
+     * Robust clipboard copy.
+     * Some environments (certain embeds / strict Permissions-Policy) block Clipboard API entirely.
+     * We fall back to execCommand, and ultimately to a prompt for manual copy.
+     */
+    async function copyToClipboard(text, opts = {}){
+      const preferModern = opts.preferModern !== false;
+      if (!text) return { ok:false, method:"none" };
+
+      // 1) Modern async clipboard (may be blocked by Permissions-Policy)
+      if (preferModern && navigator.clipboard && window.isSecureContext) {
+        try {
+          await navigator.clipboard.writeText(text);
+          return { ok:true, method:"clipboard" };
+        } catch (err) {
+          // Fall through to legacy methods.
+        }
+      }
+
+      // 2) Legacy fallback: execCommand('copy')
+      try {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        ta.setAttribute("readonly", "");
+        ta.style.position = "fixed";
+        ta.style.left = "-9999px";
+        ta.style.top = "0";
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        ta.setSelectionRange(0, ta.value.length);
+
+        const ok = typeof document.execCommand === "function" && document.execCommand("copy");
+        document.body.removeChild(ta);
+
+        if (ok) return { ok:true, method:"execCommand" };
+      } catch (err) {
+        // Ignore and fall through.
+      }
+
+      // 3) Last resort: prompt so user can manually copy
+      try {
+        window.prompt("Copy this email:", text);
+        return { ok:false, method:"prompt" };
+      } catch (err) {
+        return { ok:false, method:"blocked" };
+      }
+    }
+
+    // Copy email button: never throw, always give a usable fallback.
+    const copyBtn = document.getElementById("copyEmailBtn");
+    if (copyBtn) {
+      copyBtn.addEventListener("click", async (e) => {
+        e.preventDefault();
+
+        const emailEl = document.getElementById("emailLink");
+        const email = (emailEl?.textContent || "").trim();
+        if (!email) {
+          toast("No email found");
+          return;
+        }
+
+        const old = copyBtn.textContent;
+        copyBtn.textContent = "Copying…";
+
+        const res = await copyToClipboard(email);
+        if (res.ok) {
+          copyBtn.textContent = "Copied";
+          toast("Copied to clipboard");
+        } else {
+          // Clipboard blocked: prompt fallback already shown.
+          copyBtn.textContent = "Copy manually";
+          toast("Clipboard blocked — use the popup");
+        }
+
+        setTimeout(() => { copyBtn.textContent = old; }, 1200);
+      });
+    }
+
+    // Print
+    document.getElementById("printBtn").addEventListener("click", (e) => {
+      e.preventDefault();
+      window.print();
+    });
+
+    // Optional polish: if any link is still "#", hide it.
+    ["resumeLink","githubLink","linkedinLink","googleScholarLink","githubHeroLink","linkedinHeroLink"].forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const href = el.getAttribute("href");
+      if (!href || href === "#") el.style.display = "none";
+    });
+
+    // Minimal "test cases" (run only when visiting with ?test=1)
+    // Example: https://evilaechik.github.io/?test=1
+    function runTests(){
+      const requiredIds = ["themeBtn","emailLink","copyEmailBtn","printBtn"]; 
+      requiredIds.forEach((id) => console.assert(document.getElementById(id), `Missing element #${id}`));
+
+      // Test: empty input should not throw
+      copyToClipboard("").then((r) => console.assert(r.ok === false, "Empty input should not be ok"));
+
+      // Test: force fallback path (execCommand might still be blocked, but should not throw)
+      copyToClipboard("test@example.com", { preferModern:false }).then((r) =>
+        console.assert(r && typeof r.method === "string", "Fallback should return a result object")
+      );
+
+      console.log("Tests scheduled (async). If you see no assertion failures, you're good.");
+    }
+
+    if (new URLSearchParams(location.search).get("test") === "1") runTests();
+  </script>
+</body>
+</html>
