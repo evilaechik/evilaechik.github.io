@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0b1220" />
+  <meta name="theme-color" content="#f6f7fb" />
   <title>Artem Lavrentyev — Data Science & AI</title>
-  <meta name="description" content="Data Science / CS applicant building MpoxDetection.ai, privacy & LLM research (EmojiPrompt decoding), and historical data digitization (Volga German Institute)." />
+  <meta name="description" content="High school student from Almaty building ML systems for health, privacy, and historical data." />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Artem Lavrentyev — Data Science & AI" />
@@ -14,27 +14,29 @@
 
   <style>
     :root{
-      --bg:#070b14; --card:#0b1220; --card2:#0e1730;
-      --text:#e7ecff; --muted:#a9b4da; --muted2:#7f8ab5;
-      --line:rgba(255,255,255,.08);
+      --bg:#f6f7fb; --card:#ffffff; --card2:#ffffff;
+      --text:#0d1530; --muted:#394267; --muted2:#5a648f;
+      --line:rgba(0,0,0,.08);
       --accent:#7c5cff; --accent2:#2ee9a6;
-      --shadow: 0 18px 60px rgba(0,0,0,.35);
+      --shadow: 0 18px 60px rgba(7,11,20,.12);
       --radius:18px;
       --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
     }
-    [data-theme="light"]{
-      --bg:#f6f7fb; --card:#ffffff; --card2:#ffffff;
-      --text:#0d1530; --muted:#394267; --muted2:#5a648f;
-      --line:rgba(0,0,0,.08);
-      --shadow: 0 18px 60px rgba(7,11,20,.12);
+    [data-theme="dark"]{
+      --bg:#070b14; --card:#0b1220; --card2:#0e1730;
+      --text:#e7ecff; --muted:#a9b4da; --muted2:#7f8ab5;
+      --line:rgba(255,255,255,.08);
+      --shadow: 0 18px 60px rgba(0,0,0,.35);
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
-      margin:0; font-family:var(--sans); color:var(--text); background:radial-gradient(1200px 700px at 20% -10%, rgba(124,92,255,.25), transparent 60%),
-      radial-gradient(900px 500px at 95% 0%, rgba(46,233,166,.18), transparent 60%),
-      var(--bg);
+      margin:0; font-family:var(--sans); color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 20% -10%, rgba(124,92,255,.25), transparent 60%),
+        radial-gradient(900px 500px at 95% 0%, rgba(46,233,166,.18), transparent 60%),
+        var(--bg);
       line-height:1.55;
     }
     a{color:inherit; text-decoration:none}
@@ -43,16 +45,16 @@
       position:sticky; top:12px; z-index:50;
       display:flex; justify-content:space-between; align-items:center;
       padding:12px 14px; border:1px solid var(--line); border-radius:999px;
-      background:rgba(10,14,26,.55); backdrop-filter: blur(14px);
+      background:rgba(255,255,255,.75); backdrop-filter: blur(14px);
       box-shadow: 0 10px 30px rgba(0,0,0,.22);
     }
-    [data-theme="light"] .nav{background:rgba(255,255,255,.75)}
+    [data-theme="dark"] .nav{background:rgba(10,14,26,.55)}
     .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px}
     .dot{width:10px; height:10px; border-radius:50%;
       background:linear-gradient(135deg,var(--accent),var(--accent2));
       box-shadow:0 0 0 4px rgba(124,92,255,.15);
     }
-    .navlinks{display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-end}
+    .navlinks{display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-end; align-items:center}
     .navlinks a{
       font-size:14px; color:var(--muted); padding:8px 10px; border-radius:999px;
       border:1px solid transparent;
@@ -66,19 +68,16 @@
       font-weight:600;
     }
     .btn:hover{transform: translateY(-1px); transition: transform .15s ease}
-    .ghost{
-      background:transparent;
-    }
-    .grid{
-      display:grid; gap:16px;
-    }
+    .ghost{ background:transparent; }
+    .grid{ display:grid; gap:16px; }
     .hero{
       margin-top:18px;
       padding:26px; border-radius:var(--radius); border:1px solid var(--line);
-      background:linear-gradient(180deg, rgba(255,255,255,.04), transparent 60%),
-      radial-gradient(800px 400px at 15% 0%, rgba(124,92,255,.16), transparent 55%),
-      radial-gradient(700px 380px at 85% 30%, rgba(46,233,166,.12), transparent 55%),
-      var(--card);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.04), transparent 60%),
+        radial-gradient(800px 400px at 15% 0%, rgba(124,92,255,.16), transparent 55%),
+        radial-gradient(700px 380px at 85% 30%, rgba(46,233,166,.12), transparent 55%),
+        var(--card);
       box-shadow: var(--shadow);
     }
     h1{margin:0 0 10px; font-size:40px; line-height:1.15; letter-spacing:-.6px}
@@ -100,9 +99,7 @@
     }
     .section h2{margin:0 0 10px; font-size:22px; letter-spacing:-.2px}
     .muted{color:var(--muted)}
-    .twocol{
-      grid-template-columns: 1.3fr .9fr;
-    }
+    .twocol{ grid-template-columns: 1.3fr .9fr; }
     @media (max-width: 920px){ .twocol{grid-template-columns:1fr} h1{font-size:34px} }
     .card{
       padding:16px; border-radius:16px; border:1px solid var(--line);
@@ -116,9 +113,7 @@
     }
     .list{margin:10px 0 0; padding-left:18px; color:var(--muted)}
     .list li{margin:6px 0}
-    .kpi{
-      display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; margin-top:12px
-    }
+    .kpi{ display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; margin-top:12px }
     @media (max-width: 720px){ .kpi{grid-template-columns:1fr} }
     .kpi .box{
       padding:14px; border-radius:16px; border:1px solid var(--line);
@@ -133,13 +128,24 @@
     .small{font-size:13px}
     .inline{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
     .sep{opacity:.35}
-    .sr{position:absolute; left:-9999px}
     .toggle{
       cursor:pointer; user-select:none;
       border-radius:999px; padding:8px 10px;
       border:1px solid var(--line); background:rgba(255,255,255,.02);
       color:var(--muted); font-size:14px;
     }
+
+    /* Optional: tiny toast */
+    .toast{
+      position:fixed; left:50%; bottom:22px; transform:translateX(-50%);
+      padding:10px 12px; border-radius:12px; border:1px solid var(--line);
+      background:rgba(255,255,255,.85); color:var(--text);
+      box-shadow: 0 10px 30px rgba(0,0,0,.18);
+      backdrop-filter: blur(10px);
+      display:none; z-index:999;
+      font-size:14px;
+    }
+    [data-theme="dark"] .toast{ background:rgba(10,14,26,.85); color:var(--text); }
   </style>
 </head>
 
@@ -164,7 +170,7 @@
     <header class="hero">
       <h1>Building data products that ship, and research that holds up.</h1>
       <p class="subtitle">
-        I’m a student researcher working at the intersection of <b>Data Science</b>, <b>AI for health</b>, and <b>privacy</b>—from deploying a skin-disease diagnostic tool to training supervised decoders that “break” obfuscation methods.
+        I’m a high school student from Almaty interested in <b>Data Science</b>, <b>AI for health</b>, and <b>privacy</b>.
       </p>
 
       <div class="pillrow" aria-label="Highlights">
@@ -174,16 +180,17 @@
       </div>
 
       <div class="cta">
-        <!-- Replace # with your real links -->
         <a class="btn" href="#projects">See projects</a>
         <a class="btn ghost" href="#contact">Get in touch</a>
-        <a class="btn ghost" href="#" id="resumeLink" title="Add your resume link">Resume (add link)</a>
+        <a class="btn ghost" href="https://drive.google.com/file/d/1ErBQtHGY_110VMLZ19MDOvEoylRxUB5D/view?usp=sharing" id="resumeLink" title="Resume" target="_blank" rel="noopener noreferrer">Resume</a>
+        <a class="btn ghost" href="https://github.com/evilaechik" id="githubHeroLink" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/artem-lavrentyev-b93870282/" id="linkedinHeroLink" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </div>
 
       <div class="kpi" role="list" aria-label="Quick stats">
         <div class="box" role="listitem">
-          <div class="num">Top 1%</div>
-          <div class="lbl">Class rank (from your profile)</div>
+          <div class="num">2/196</div>
+          <div class="lbl">Class rank</div>
         </div>
         <div class="box" role="listitem">
           <div class="num">17,000+</div>
@@ -204,9 +211,6 @@
         </p>
         <p class="muted">
           It’s why I digitized deportation records with the Volga German Institute, and why I’m drawn to applied AI: if a model can change a decision in the real world, it should be accountable, testable, and built for the people who need it most.
-        </p>
-        <p class="small muted">
-          (This section is inspired by your personal statement draft about identity and the Volga German archive work—feel free to shorten or make it more “tech-y”.)
         </p>
       </div>
 
@@ -245,9 +249,8 @@
           <ul class="list">
             <li>Built + trained CNN models; curated a dermatology dataset.</li>
             <li>Piloted in 5 clinics; ~1.6K monthly users.</li>
-            <li>Featured by Forbes Kazakhstan & National Geographic (per your activity list).</li>
+            <li>Featured by Forbes Kazakhstan & National Geographic (add links).</li>
           </ul>
-          <p class="small muted">Add links: demo, paper, press.</p>
         </article>
 
         <article class="card">
@@ -263,7 +266,6 @@
             <li>Trained decoders; tested semantic failure points.</li>
             <li>Ran adversarial evaluations across domains (medical/legal/etc.).</li>
           </ul>
-          <p class="small muted">Add links: paper notes, repo, results.</p>
         </article>
 
         <article class="card">
@@ -279,7 +281,6 @@
             <li>Partnered with Wichita State University’s VGI supervision.</li>
             <li>Released dataset for public access.</li>
           </ul>
-          <p class="small muted">Add links: dataset page, methodology.</p>
         </article>
       </div>
 
@@ -292,7 +293,6 @@
           <div class="meta">
             <span class="tag">ArcGIS</span><span class="tag">Geo data</span><span class="tag">Policy</span>
           </div>
-          <p class="small muted">Add link to your story map.</p>
         </article>
 
         <article class="card">
@@ -303,7 +303,6 @@
           <div class="meta">
             <span class="tag">Teaching</span><span class="tag">Leadership</span><span class="tag">Community</span>
           </div>
-          <p class="small muted">Add photos, problems archive, event stats.</p>
         </article>
       </div>
     </section>
@@ -347,9 +346,6 @@
           </ul>
         </div>
       </div>
-      <p class="small muted" style="margin-top:10px;">
-        Tip: keep each role to 2–3 bullets and link evidence (press, repos, papers).
-      </p>
     </section>
 
     <section class="section" id="honors">
@@ -372,9 +368,6 @@
           </ul>
         </div>
       </div>
-      <p class="small muted" style="margin-top:10px;">
-        Replace any vague lines with exact placement + denominator (e.g., “Gold (1/89 finalists)”).
-      </p>
     </section>
 
     <section class="section" id="contact">
@@ -383,33 +376,23 @@
         If you want to collaborate (research, product, or writing), email me or connect on socials.
       </p>
 
-      <div class="grid" style="grid-template-columns: 1.2fr .8fr; gap:14px;">
+      <div class="grid" style="grid-template-columns: 1fr; gap:14px;">
         <div class="card">
           <h3>Message</h3>
           <p class="muted small">
-            This is a static website, so the easiest contact is email. Replace the email below with yours.
+            This is a static website, so email is the fastest way to reach me.
           </p>
           <p class="inline small">
-            <b>Email:</b> <a href="mailto:your.email@example.com" id="emailLink">your.email@example.com</a>
+            <b>Email:</b> <a href="mailto:artem@stemolympiads.kz" id="emailLink">artem@stemolympiads.kz</a>
             <span class="sep">•</span>
             <a class="btn ghost" href="#" id="copyEmailBtn">Copy email</a>
           </p>
           <p class="inline small" style="margin-top:10px;">
             <b>Links:</b>
-            <a class="btn ghost" href="#" id="githubLink">GitHub (add)</a>
-            <a class="btn ghost" href="#" id="linkedinLink">LinkedIn (add)</a>
-            <a class="btn ghost" href="#" id="googleScholarLink">Google Scholar (add)</a>
+            <a class="btn ghost" href="https://github.com/evilaechik" id="githubLink" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a class="btn ghost" href="https://www.linkedin.com/in/artem-lavrentyev-b93870282/" id="linkedinLink" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a class="btn ghost" href="#" id="googleScholarLink" style="display:none">Google Scholar</a>
           </p>
-        </div>
-
-        <div class="card">
-          <h3>Quick edits</h3>
-          <ul class="list">
-            <li>Change name + headline in the hero.</li>
-            <li>Add real URLs for resume / GitHub / LinkedIn.</li>
-            <li>Swap “Selected Honors” with your exact list.</li>
-            <li>Optional: add a headshot (I’ll show you how).</li>
-          </ul>
         </div>
       </div>
     </section>
@@ -424,37 +407,118 @@
     </footer>
   </div>
 
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
   <script>
-    // Theme toggle (persists)
+    // Theme toggle (persists). Default: light.
     const root = document.documentElement;
     const btn = document.getElementById("themeBtn");
-    const saved = localStorage.getItem("theme");
-    if (saved) root.setAttribute("data-theme", saved);
-    btn.textContent = (root.getAttribute("data-theme")==="light") ? "☀️" : "🌙";
+
+    const saved = localStorage.getItem("theme"); // "light" | "dark" | null
+    const initial = (saved === "light" || saved === "dark") ? saved : "light";
+    root.setAttribute("data-theme", initial);
+    btn.textContent = (initial === "light") ? "☀️" : "🌙";
 
     btn.addEventListener("click", () => {
-      const cur = root.getAttribute("data-theme");
-      const next = (cur === "light") ? "" : "light";
-      if (next) root.setAttribute("data-theme", next);
-      else root.removeAttribute("data-theme");
-      localStorage.setItem("theme", next || "");
+      const cur = root.getAttribute("data-theme") || "light";
+      const next = (cur === "light") ? "dark" : "light";
+      root.setAttribute("data-theme", next);
+      localStorage.setItem("theme", next);
       btn.textContent = (next === "light") ? "☀️" : "🌙";
     });
 
     // Year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Copy email
-    document.getElementById("copyEmailBtn").addEventListener("click", (e) => {
-      e.preventDefault();
-      const email = document.getElementById("emailLink").textContent.trim();
-      navigator.clipboard.writeText(email).then(() => {
-        const b = e.currentTarget;
-        const old = b.textContent;
-        b.textContent = "Copied";
-        setTimeout(() => b.textContent = old, 900);
+    // Small toast helper
+    const toastEl = document.getElementById("toast");
+    let toastTimer = null;
+    function toast(msg){
+      if (!toastEl) return;
+      toastEl.textContent = msg;
+      toastEl.style.display = "block";
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => { toastEl.style.display = "none"; }, 1400);
+    }
+
+    /**
+     * Robust clipboard copy.
+     * Some environments (certain embeds / strict Permissions-Policy) block Clipboard API entirely.
+     * We fall back to execCommand, and ultimately to a prompt for manual copy.
+     */
+    async function copyToClipboard(text, opts = {}){
+      const preferModern = opts.preferModern !== false;
+      if (!text) return { ok:false, method:"none" };
+
+      // 1) Modern async clipboard (may be blocked by Permissions-Policy)
+      if (preferModern && navigator.clipboard && window.isSecureContext) {
+        try {
+          await navigator.clipboard.writeText(text);
+          return { ok:true, method:"clipboard" };
+        } catch (err) {
+          // Fall through to legacy methods.
+        }
+      }
+
+      // 2) Legacy fallback: execCommand('copy')
+      try {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        ta.setAttribute("readonly", "");
+        ta.style.position = "fixed";
+        ta.style.left = "-9999px";
+        ta.style.top = "0";
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        ta.setSelectionRange(0, ta.value.length);
+
+        const ok = typeof document.execCommand === "function" && document.execCommand("copy");
+        document.body.removeChild(ta);
+
+        if (ok) return { ok:true, method:"execCommand" };
+      } catch (err) {
+        // Ignore and fall through.
+      }
+
+      // 3) Last resort: prompt so user can manually copy
+      try {
+        window.prompt("Copy this email:", text);
+        return { ok:false, method:"prompt" };
+      } catch (err) {
+        return { ok:false, method:"blocked" };
+      }
+    }
+
+    // Copy email button: never throw, always give a usable fallback.
+    const copyBtn = document.getElementById("copyEmailBtn");
+    if (copyBtn) {
+      copyBtn.addEventListener("click", async (e) => {
+        e.preventDefault();
+
+        const emailEl = document.getElementById("emailLink");
+        const email = (emailEl?.textContent || "").trim();
+        if (!email) {
+          toast("No email found");
+          return;
+        }
+
+        const old = copyBtn.textContent;
+        copyBtn.textContent = "Copying…";
+
+        const res = await copyToClipboard(email);
+        if (res.ok) {
+          copyBtn.textContent = "Copied";
+          toast("Copied to clipboard");
+        } else {
+          // Clipboard blocked: prompt fallback already shown.
+          copyBtn.textContent = "Copy manually";
+          toast("Clipboard blocked — use the popup");
+        }
+
+        setTimeout(() => { copyBtn.textContent = old; }, 1200);
       });
-    });
+    }
 
     // Print
     document.getElementById("printBtn").addEventListener("click", (e) => {
@@ -462,12 +526,32 @@
       window.print();
     });
 
-    // Optional: set your links here
-    // document.getElementById("resumeLink").href = "https://...";
-    // document.getElementById("githubLink").href = "https://github.com/...";
-    // document.getElementById("linkedinLink").href = "https://www.linkedin.com/in/...";
-    // document.getElementById("googleScholarLink").href = "https://scholar.google.com/citations?user=...";
-    // document.getElementById("emailLink").href = "mailto:your.email@example.com";
+    // Optional polish: if any link is still "#", hide it.
+    ["resumeLink","githubLink","linkedinLink","googleScholarLink","githubHeroLink","linkedinHeroLink"].forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const href = el.getAttribute("href");
+      if (!href || href === "#") el.style.display = "none";
+    });
+
+    // Minimal "test cases" (run only when visiting with ?test=1)
+    // Example: https://evilaechik.github.io/?test=1
+    function runTests(){
+      const requiredIds = ["themeBtn","emailLink","copyEmailBtn","printBtn"]; 
+      requiredIds.forEach((id) => console.assert(document.getElementById(id), `Missing element #${id}`));
+
+      // Test: empty input should not throw
+      copyToClipboard("").then((r) => console.assert(r.ok === false, "Empty input should not be ok"));
+
+      // Test: force fallback path (execCommand might still be blocked, but should not throw)
+      copyToClipboard("test@example.com", { preferModern:false }).then((r) =>
+        console.assert(r && typeof r.method === "string", "Fallback should return a result object")
+      );
+
+      console.log("Tests scheduled (async). If you see no assertion failures, you're good.");
+    }
+
+    if (new URLSearchParams(location.search).get("test") === "1") runTests();
   </script>
 </body>
 </html>
